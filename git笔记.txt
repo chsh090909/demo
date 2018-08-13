@@ -1,0 +1,43 @@
+1、初始化本地git仓库：git init
+2、文件提交到暂存区：git add readme.txt
+3、文件提交到仓库：git commit -m "wrote a readme file"
+4、查看git仓库文件状态：git status
+5、查看文件的修改内容：git diff readme.txt
+6、查看git提交日志：git log，还可以用git log --pretty=oneline
+7、git回退版本：git reset --hard HEAD^，回退上一个版本用HEAD^，上上一个版本就是HEAD^^，往上100个版本写成HEAD~100
+8、git回退版本commit id：git reset --hard 1094ad，1094ad为commit id的前6位数字
+9、查看git历史命令：git reflog
+10、git的撤销修改：
+	场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
+	场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作。
+	场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库
+11、删除文件：git rm file，并用git commit确认提交，误删除的文件用checkout撤销回来
+12、添加远程仓库到本地origin目录：git remote add origin git@github.com:yourname/learngit.git
+13、推送本地master分支到远程仓库：git push -u origin master，第一次推送用-u参数
+14、从远程仓库克隆岛本地：git clone git@github.com:yourname/gitskills.git
+15、创建并打开dev分支：git checkout -b dev，相当于两条命令：git branch dev 和 git checkout dev
+16、查看当前位于哪个分支：git branch
+17、切换master分支：get checkout master
+18、合并dev分支到当前分支上（快速合并）：git merge dev
+19、删除dev分支：git branch -d dev，强行删除用git branch -D dev，在删除一个没有被合并过的分支时使用
+20、文件冲突时，需先解决冲突再提交、合并文件。Git用<<<<<<<，=======，>>>>>>>标记出不同分支的内容
+21、查看分支合并图（git log 带参数）：git log --graph --pretty=oneline --abbrev-commit
+22、不用快速合并模式合并dev分支：git merge --no-ff -m "merge with no-ff" dev
+23、隐藏当前工作现场分支：git stash
+24、查看隐藏的工作分支：git stash list
+25、恢复隐藏的工作分支（stash不删除）：git stash apply，删除需要再用git stash drop
+26、恢复并删除隐藏的工作分支：git stash pop
+27、查看远程库信息：git remove -v
+28、从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交
+29、在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致
+30、建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name
+31、git rebase可以把本地未push的分叉提交历史整理成直线，目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比
+32、当前HEAD打标签用：git tag tagname，给指定的commitid打标签用git tag tagname commitid
+33、打标签并加上标签信息用：git tag -a tagname -m "tagtatil" commitid
+34、查看所有标签：git tag
+35、删除标签：git tag -d tagname
+36、推送标签到远程：git push origin tagname，一次性推送所有标签用git push origin --tags
+37、删除已经推送到远程的标签需先删除本地标签，再远程删除：git push origin :refs/tags/tagname
+38、需要忽略提交的文件需要写入到.gitignore文件中，.gitignore文件需放入git目录中管理起来
+39、配置文件别名：git config --global alias.st status，将status用st代替，以后用git status时，可以直接输入git st
+40、每个仓库的配置文件为.git/config，而当前用户的Git配置文件放在用户主目录下的一个隐藏文件.gitconfig中
