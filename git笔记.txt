@@ -32,11 +32,11 @@
 29、在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致
 30、建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name
 31、git rebase可以把本地未push的分叉提交历史整理成直线，目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比
-32、当前HEAD打标签用：git tag tagname，给指定的commitid打标签用git tag tagname commitid
-33、打标签并加上标签信息用：git tag -a tagname -m "tagtatil" commitid
+32、当前HEAD打标签用：git tag <tagname>，给指定的commitid打标签用git tag <tagname> commitid
+33、打标签并加上标签信息用：git tag -a <tagname> -m "tagtatil" commitid
 34、查看所有标签：git tag
-35、删除标签：git tag -d tagname
-36、推送标签到远程：git push origin tagname，一次性推送所有标签用git push origin --tags
+35、删除标签：git tag -d <tagname>
+36、推送标签到远程：git push origin <tagname>，一次性推送所有标签用git push origin --tags
 37、删除已经推送到远程的标签需先删除本地标签，再远程删除：git push origin :refs/tags/tagname
 38、需要忽略提交的文件需要写入到.gitignore文件中，.gitignore文件需放入git目录中管理起来
 39、配置文件别名：git config --global alias.st status，将status用st代替，以后用git status时，可以直接输入git st
